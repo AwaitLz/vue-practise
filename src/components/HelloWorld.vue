@@ -1,44 +1,70 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
-</script>
-
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div>
+    <p>姓名:{{ name }}</p>
+    <p>年龄:{{ age }}</p>
+    <p @click="sayHello(10)">说话</p>
   </div>
 </template>
 
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
+<script>
+export default {
+  name: "App",
+  setup() { //为一个函数
+     //定义变量 
+    let name = "张三";
+    let age = 20;
+     // 定义方法
+    function sayHello(m) {
+      alert(`${name}--${age}--${m}`);
+    }
+    return { //setup函数返回值为一个对象
+      name,
+      age,
+      sayHello,
+    };
+  },
+};
+</script>
 
-h3 {
-  font-size: 1.2rem;
-}
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
 
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
+
+
+
+
+
+
+
+<!-- <template>
+  <div class="person">
+    {{ name }}
+    <button @click="onclickHandle">点击</button>
+  </div>
+</template>
+
+
+<script>
+  export default {
+    name: "PersonCom",
+    data() {
+      return {
+        name: 'vue'
+      }
+    },
+    methods: {
+      onclickHandle () {
+        this.name = 'react'
+      }
+    }
   }
+
+</script>
+
+<style scoped>
+.person {
+  width: 300px;
+  margin: 10px;
+  padding: 20px;
+  background: rebeccapurple
 }
-</style>
+</style> -->
